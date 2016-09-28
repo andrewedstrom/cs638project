@@ -21,26 +21,3 @@ class ArkiveEndangeredHtmlSpider(scrapy.Spider):
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log('Crikey! Looks like we caught us a wild %s!' % animal)
-
-        # Extract atributes
-        # animal_name = response.xpath('//h1/text()').extract_first()[:-2]
-
-        # scientific_name = response.xpath('//i/text()').extract_first()
-        # kingdom
-        # phylum
-        # class
-        # order
-        # family
-        # genus
-        # status
-        # description
-        # synonyms
-        #
-        #
-        # size
-        # weight
-        # status
-        # range (do we need this)
-        # habitat (do we need this)
-        #
-
