@@ -20,7 +20,7 @@ class ArkiveHtmlSpider(scrapy.Spider):
         filename = 'arkive-endangered-html/%s.html' % animal
         with open(filename, 'wb') as f:
             f.write(response.body)
-        self.log('Crikey, looks like we caught us a wild %s!' % animal)
+        self.log('Crikey! Looks like we caught us a wild %s!' % animal)
 
         # Extract atributes
         # animal_name = response.xpath('//h1/text()').extract_first()[:-2]
