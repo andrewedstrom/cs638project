@@ -1,8 +1,8 @@
 import scrapy
 
-class ArkiveLinkSpider(scrapy.Spider):
+class ArkiveEndangeredLinkSpider(scrapy.Spider):
     # Unique identifier for spider
-    name = 'arkive-link'
+    name = 'arkive-endangered-link'
 
     # Initiate a request and yield an iterable of request
     def start_requests(self):
@@ -17,7 +17,7 @@ class ArkiveLinkSpider(scrapy.Spider):
     # Saves raw html and finds new URLs to follow
     def parse(self, response):
         htmllist = response.xpath('//li/h2/a/@href').extract()
-        filename = 'arkive-endangered/urls'
+        filename = 'arkive-endangered-misc/urls'
         with open(filename, 'ab') as f:
             for html in htmllist:
                 f.write("http://www.arkive.org" + html + "factsheet\n")

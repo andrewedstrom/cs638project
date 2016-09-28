@@ -1,12 +1,12 @@
 import scrapy
 
-class ArkiveHtmlSpider(scrapy.Spider):
+class ArkiveEndangeredHtmlSpider(scrapy.Spider):
     # Unique identifier for spider
-    name = 'arkive-html'
+    name = 'arkive-endangered-html'
 
     # Initiate a request and yield an iterable of request
     def start_requests(self):
-        urlfile = 'arkive-endangered/urls'
+        urlfile = 'arkive-endangered-misc/urls'
         f = open(urlfile, 'r')
         urls = f.read().split('\n')
         for url in urls:
