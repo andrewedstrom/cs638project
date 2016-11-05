@@ -6,9 +6,11 @@ from string import punctuation
 from collections import Counter
 import sys
 
-reload(sys)
 
+reload(sys)
 sys.setdefaultencoding("utf-8")
+
+
 
 threats = ['loss', 'fragmentation', 'hunting', 'poaching', 'fishing', 'overfishing', 'environmental', 'environment', 'invasive', 'disease', 'pet', 'pollution']
 
@@ -16,7 +18,6 @@ conservation = ['cites', 'protection law', 'captive breeding', 'protected', 'end
 
 conservationString = ''
 threatString = ''
-
 def findConservation(string): 
     consFound = []
     string = string.lower()
@@ -61,14 +62,12 @@ def urlNeeded():
     allThreats = []
     global conservation
     allCons = []
-    f = open('output.txt', "wb")
+    f = open('output.txt', "w")
     f.write('Name, Alternate Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
     with open('test.txt', "rb") as fd:
         for line in fd:
-            f.write('\n')
             line = line.lstrip().rstrip()
             url = line
-            print url
             r = requests.get(url)
             soup = BeautifulSoup(r.text.encode('utf-8'), 'html.parser')
             newName = soup.find('td').text
@@ -131,23 +130,6 @@ def urlNeeded():
             else:
                 f.write('\n')
 
-        for word in threats:
-            howMany = allThreats.count(word)
-            f.write(' ' + word + ': ')
-            f.write(str(howMany)) 
-        
-        for word in conservation:
-            howMany = allCons.count(word)
-            f.write(' ' + word + ': ')
-            f.write(str(howMany))
-        cons = Counter(conservationString.split()).most_common()
-        f.write('conservation:')
-        for t in cons:
-            f.write(str(t))
-        threats = Counter(threatString.split()).most_common()
-        f.write('threats:')
-        for t in threats:
-            f.write(str(t))
     fd.close()
     f.close()
 
