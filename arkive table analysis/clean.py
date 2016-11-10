@@ -9,6 +9,7 @@ import sys
 def main():
 	f = open('finalOutput.txt', "wb")
 	with open('output1.txt', "rb") as fd:
+		f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
 		for line in fd:
 			line = line.lstrip().rstrip()
 
@@ -23,7 +24,7 @@ def main():
 			elif check == 'Animalia':
 				partOne = False
 
-			checker = str(list[8])
+			checker = str(list[9])
 			
 			if 'kg' in checker:
 				if partOne:
