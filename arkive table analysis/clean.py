@@ -12,14 +12,20 @@ def main():
 		for line in fd:
 			line = line.lstrip().rstrip()
 
+			line = line.replace('\n','')
+			
 			list = line.split(",")
 			check = str(list[0])
+			print check
+			partOne = False
 			if check == 'Plantae':
-				print('yes')
-			elif check == 'Animalia':
-				print('yes')
-			else:
+				partOne = False
+			if check == 'Animalia':
+				partOne = False
+			
+			
 				f.write(line + '\n')
+				print(line)
 	fd.close()
 	f.close
 

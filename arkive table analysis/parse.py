@@ -73,6 +73,7 @@ def urlNeeded():
             newName = soup.find('td').text
             newName = newName.lstrip().rstrip()
             newName = str(newName)
+            newName = newName.replace(',',';')
             print newName
             f.write(newName + ',')
             for t in soup.findAll('h1'):
@@ -86,6 +87,8 @@ def urlNeeded():
             soupsup = soup.findAll('td', align="left")
             for node in soupsup:
                 waant = ''.join(node.findAll(text=True))
+                waant = str(waant)
+                waant = waant.replace('\n', '')
                 f.write(waant + ',')
                 if "(" in node:
                     break
