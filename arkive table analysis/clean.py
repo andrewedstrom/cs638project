@@ -8,18 +8,47 @@ import sys
 
 def main():
 	f = open('finalOutput.txt', "wb")
-	with open('output.txt', "rb") as fd:
+	with open('output1.txt', "rb") as fd:
+		f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
 		for line in fd:
 			line = line.lstrip().rstrip()
 
+			line = line.replace('\n','')
+			
 			list = line.split(",")
 			check = str(list[0])
+			print check
+			partOne = True
 			if check == 'Plantae':
-				print('yes')
+				partOne = False
 			elif check == 'Animalia':
-				print('yes')
-			else:
-				f.write(line + '\n')
+				partOne = False
+
+			checker = str(list[9])
+			
+			if 'kg' in checker:
+				if partOne:
+					f.write(line +','+'\n')
+
+
+			if ' g' in checker:
+				if partOne:
+					f.write(line +','+'\n')
+
+			if ' m' in checker:
+				if partOne:
+					f.write(line + ',' + '\n')
+
+			if 'cm' in checker:
+				if partOne:
+					f.write(line + ',' + '\n')
+
+			if 'mm' in checker:
+				if partOne:
+					f.write(line + ',' + '\n')
+
+
+			print(line)
 	fd.close()
 	f.close
 

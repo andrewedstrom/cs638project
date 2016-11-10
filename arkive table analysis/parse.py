@@ -63,7 +63,7 @@ def urlNeeded():
     global conservation
     allCons = []
     f = open('output.txt', "w")
-    f.write('Name, Alternate Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
+    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
     with open('test.txt', "rb") as fd:
         for line in fd:
             line = line.lstrip().rstrip()
@@ -73,19 +73,25 @@ def urlNeeded():
             newName = soup.find('td').text
             newName = newName.lstrip().rstrip()
             newName = str(newName)
-            print newName
+            newName = newName.replace(',',';')
             f.write(newName + ',')
             for t in soup.findAll('h1'):
                 name = t.text
                 s = '('
                 if s in name:
-                    name = name.split(s)[0]
+                    commonName = name.split(s)[0]
+                    scienceName = name.split(s)[1]
+                    scienceName = scienceName.replace(')','')
                     
+                    f.write(scienceName + ',')
+                    print scienceName
                     f.write(name + ',')
 
             soupsup = soup.findAll('td', align="left")
             for node in soupsup:
                 waant = ''.join(node.findAll(text=True))
+                waant = str(waant)
+                waant = waant.replace('\n', '')
                 f.write(waant + ',')
                 if "(" in node:
                     break
