@@ -8,7 +8,7 @@ import sys
 
 def main():
 	f = open('finalOutput.txt', "wb")
-	with open('output.txt', "rb") as fd:
+	with open('output1.txt', "rb") as fd:
 		for line in fd:
 			line = line.lstrip().rstrip()
 
@@ -17,15 +17,37 @@ def main():
 			list = line.split(",")
 			check = str(list[0])
 			print check
-			partOne = False
+			partOne = True
 			if check == 'Plantae':
 				partOne = False
-			if check == 'Animalia':
+			elif check == 'Animalia':
 				partOne = False
+
+			checker = str(list[8])
 			
-			
-				f.write(line + '\n')
-				print(line)
+			if 'kg' in checker:
+				if partOne:
+					f.write(line +','+'\n')
+
+
+			if ' g' in checker:
+				if partOne:
+					f.write(line +','+'\n')
+
+			if ' m' in checker:
+				if partOne:
+					f.write(line + ',' + '\n')
+
+			if 'cm' in checker:
+				if partOne:
+					f.write(line + ',' + '\n')
+
+			if 'mm' in checker:
+				if partOne:
+					f.write(line + ',' + '\n')
+
+
+			print(line)
 	fd.close()
 	f.close
 

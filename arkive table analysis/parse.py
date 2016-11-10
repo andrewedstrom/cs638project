@@ -74,7 +74,6 @@ def urlNeeded():
             newName = newName.lstrip().rstrip()
             newName = str(newName)
             newName = newName.replace(',',';')
-            print newName
             f.write(newName + ',')
             for t in soup.findAll('h1'):
                 name = t.text
