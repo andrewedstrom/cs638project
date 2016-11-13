@@ -125,7 +125,7 @@ def urlNeeded():
             
             foundCons = findConservation(ofInterest)
             
-            f.write(' ,')
+
             ofInterest = parseThrough(ofInterest)
             conservationString = conservationString + ofInterest
 
