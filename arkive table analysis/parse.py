@@ -63,7 +63,7 @@ def urlNeeded():
     global conservation
     allCons = []
     f = open('output.txt', "w")
-    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
+    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, tCount, cCount' + '\n')
     with open('test.txt', "rb") as fd:
         for line in fd:
             line = line.lstrip().rstrip()
@@ -109,8 +109,8 @@ def urlNeeded():
             badges = soup.findAll("p", class_="Threats")
             ofInterest = str(badges)
             
-            found = findThreats(ofInterest)
-            allThreats.extend(found)
+            foundThreats = findThreats(ofInterest)
+           
             ofInterest = parseThrough(ofInterest)
             threatString = threatString + ofInterest
             
@@ -118,23 +118,42 @@ def urlNeeded():
                 f.write(ofInterest)
                 f.write(',')
             else:
-                f.write(',')
+                f.write(' ,')
 
             badges = soup.findAll("p", class_="Conservation")
             ofInterest = str(badges)
             
-            found = findConservation(ofInterest)
-            allCons.extend(found)
+            foundCons = findConservation(ofInterest)
             
+            f.write(' ,')
             ofInterest = parseThrough(ofInterest)
             conservationString = conservationString + ofInterest
 
             
             if ofInterest:
                 f.write(ofInterest)
-                f.write('\n')
+                f.write(' ,' + '')
+
             else:
-                f.write('\n')
+                f.write(' ,')
+
+            
+            for node in foundThreats:
+                f.write(node)
+                f.write(';')
+            f.write(' ,')
+
+
+            for node in foundCons:
+                f.write(node)
+                f.write(';')
+            f.write(' ,')
+
+            f.write(str(len(foundThreats)))
+            f.write(',')
+            f.write(str(len(foundCons)))
+            f.write('\n')
+            
 
     fd.close()
     f.close()
