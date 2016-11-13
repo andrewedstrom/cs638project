@@ -8,8 +8,8 @@ import sys
 
 def main():
 	f = open('finalOutput.txt', "wb")
-	with open('output1.txt', "rb") as fd:
-		f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation' + '\n')
+	f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, tCount, cCount' + '\n')
+	with open('output.txt', "rb") as fd:
 		for line in fd:
 			line = line.lstrip().rstrip()
 
@@ -48,7 +48,6 @@ def main():
 					f.write(line + ',' + '\n')
 
 
-			print(line)
 	fd.close()
 	f.close
 
