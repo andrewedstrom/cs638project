@@ -63,18 +63,15 @@ def urlNeeded():
     global conservation
     allCons = []
     f = open('output.txt', "w")
-    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, tCount, cCount' + '\n')
+    f.write('Name, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, tCount, cCount' + '\n')
     with open('test.txt', "rb") as fd:
+
         for line in fd:
             line = line.lstrip().rstrip()
             url = line
             r = requests.get(url)
             soup = BeautifulSoup(r.text.encode('utf-8'), 'html.parser')
-            newName = soup.find('td').text
-            newName = newName.lstrip().rstrip()
-            newName = str(newName)
-            newName = newName.replace(',',';')
-            f.write(newName + ',')
+            
             for t in soup.findAll('h1'):
                 name = t.text
                 s = '('
@@ -91,6 +88,7 @@ def urlNeeded():
             for node in soupsup:
                 waant = ''.join(node.findAll(text=True))
                 waant = str(waant)
+                waant = waant.replace(',', '')
                 waant = waant.replace('\n', '')
                 f.write(waant + ',')
                 if "(" in node:
@@ -102,7 +100,9 @@ def urlNeeded():
             check = 9 
             badge = len(items)
             if badge > 6:
-            	f.write(items[badge - 1] + ',')
+                item = str(items[badge - 1])
+                item = item.replace(',', '')
+            	f.write(item + ',')
             else:
             	f.write(',')
 
