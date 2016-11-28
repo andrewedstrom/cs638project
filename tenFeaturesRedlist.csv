@@ -1,4 +1,4 @@
-,animalName,GENUS,FAMILY,ECOLOGY,COUNTRIES,THREAT_PARAGRAPH,CONSERVATION_PARAGRAPH,POP_TREND,STATUS,country_count,scientific_name
+id,name,genus,family,ecology,countries,threat_paragraph,conservation_paragraph,pop_trend,status,country_count,scientific_name
 0,Ochlockonee Moccasinshell,Medionidus,Unionidae,Freshwater,"United States (Florida, Georgia); ",,,,"
     Critically Endangered
 
