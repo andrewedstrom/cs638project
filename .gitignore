@@ -1,4 +1,5 @@
 *.pyc
 *.zip
-.ipynb_checkpoints/*
-moreBlocking/larger_candidate_set.csv
+*ipynb_checkpoints*
+moreBlocking/larger_candidate_set*
+
