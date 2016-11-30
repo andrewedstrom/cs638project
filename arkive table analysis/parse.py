@@ -65,7 +65,7 @@ def urlNeeded():
     global conservation
     allCons = []
     f = open('output.txt', "w")
-    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, status, countries' + '\n')
+    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, status, countries, country_count' + '\n')
     with open('test.txt', "rb") as fd:
         for line in fd:
             line = line.lstrip().rstrip()
@@ -137,11 +137,18 @@ def urlNeeded():
             countries = str(countries)
             #countries = re.sub('[^A-Z]', '', s)
             countries = countries.replace(',', '')
-            print countries
-
+            
+            cCount = sum(c.isdigit() for c in countries)
+            cCount = str(cCount)
+            print cCount
 
             status = soup.findAll("p", class_="Status")
             status = str(status)
+            if 'Critically' in status:
+                status = 'Critically Endangered'
+
+            else:
+                status = 'Endangered'
 
 
 
@@ -167,6 +174,8 @@ def urlNeeded():
             f.write(status)
             f.write(',')
             f.write(countries)
+            f.write(',')
+            f.write(cCount)
             f.write('\n')
             
 
