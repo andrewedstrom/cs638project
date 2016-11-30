@@ -222,7 +222,6 @@ http://www.arkive.org/begonia/begonia-hitchcockii/factsheet
 http://www.arkive.org/begonia/begonia-valvata/factsheet
 http://www.arkive.org/begonia/begonia-serotina/factsheet
 http://www.arkive.org/behaimia/behaimia-cubensis/factsheet
-http://www.arkive.org/beldings-yellowthroat/geothlypis-beldingi/factsheet
 http://www.arkive.org/bellamya/bellamya-contracta/factsheet
 http://www.arkive.org/bellamya/bellamya-crawshayi/factsheet
 http://www.arkive.org/bellamya/bellamya-phthinotropis/factsheet
@@ -3140,7 +3139,6 @@ http://www.arkive.org/bonytail-chub/gila-elegans/factsheet
 http://www.arkive.org/booroolong-frog/litoria-booroolongensis/factsheet
 http://www.arkive.org/boreal-felt-lichen/erioderma-pedicellatum/factsheet
 http://www.arkive.org/bornean-orangutan/pongo-pygmaeus/factsheet
-http://www.arkive.org/bottle-palm/hyophorbe-lagenicaulis/factsheet
 http://www.arkive.org/boulengers-rocket-frog/hyloxalus-vertebralis/factsheet
 http://www.arkive.org/bradytriton/bradytriton-silus/factsheet
 http://www.arkive.org/brazilian-land-snail/megalobulimus-grandis/factsheet

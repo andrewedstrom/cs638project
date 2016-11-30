@@ -2,10 +2,8 @@ import os.path
 import requests
 import time
 from bs4 import BeautifulSoup
-from geotext import GeoText as gt
 from string import punctuation
 from collections import Counter
-import re
 import sys
 
 
@@ -65,7 +63,7 @@ def urlNeeded():
     global conservation
     allCons = []
     f = open('output.txt', "w")
-    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, status, countries' + '\n')
+    f.write('Scientific Name, Nickname, Common Name, Kingdom, Phylum, Class, Order, Family, Genus, Size, Threats, Conservation, Threat Keywords, Conservation Keywords, tCount, cCount' + '\n')
     with open('test.txt', "rb") as fd:
         for line in fd:
             line = line.lstrip().rstrip()
@@ -131,20 +129,7 @@ def urlNeeded():
             ofInterest = parseThrough(ofInterest)
             conservationString = conservationString + ofInterest
 
-            badges = soup.findAll("p", class_="Range")
-            badges = str(badges)
-            countries = gt(badges).country_mentions
-            countries = str(countries)
-            #countries = re.sub('[^A-Z]', '', s)
-            countries = countries.replace(',', '')
-            print countries
-
-
-            status = soup.findAll("p", class_="Status")
-            status = str(status)
-
-
-
+            
             if ofInterest:
                 f.write(ofInterest)
                 f.write(' ,' + '')
@@ -164,9 +149,9 @@ def urlNeeded():
                 f.write(';')
             f.write(' ,')
 
-            f.write(status)
+            f.write(str(len(foundThreats)))
             f.write(',')
-            f.write(countries)
+            f.write(str(len(foundCons)))
             f.write('\n')
             
 
