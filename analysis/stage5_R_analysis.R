@@ -2,11 +2,12 @@
 ########### read in and explore #############
 #############################################
 
-d <- read.csv("blocking/candidate_set_with_added_features.csv")
+d <- read.csv("labeled.csv")
 str(d)
+
 varDescribe(d)
 # Univariate exploration
-varPlot(d$) 
+varPlot(d$rtable_country_count) 
 varPlot(d$) 
 varPlot(d$)
 
@@ -37,6 +38,8 @@ corr.test(d[,c('rtable_conservation_keywords_NUM','rtable_threat_keywords_NUM','
 # Status predicted fairly well by conservation keywords
 # Phylum predicts Kingdom at only 90%, showing us the matching rate of error
 scatterplotMatrix(d[,c('income','education','women')])
+
+
 
 
 # left
