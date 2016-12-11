@@ -17,40 +17,43 @@ varPlot(d$)
 #############################################
 
 #### feats to use?
-# right table
-d$rtable_tCount
-d$rtable_status
-d$rtable_phylum
-
 # create numeric representation of factor variables
 d$rtable_status_NUM <- as.numeric(d$rtable_status)
+d$rtable_name_NUM <- as.numeric(d$rtable_name)
 d$rtable_kingdom_NUM <- as.numeric(d$rtable_kingdom)
 d$rtable_phylum_NUM <- as.numeric(d$rtable_phylum)
 d$rtable_class_NUM <- as.numeric(d$rtable_class)
 d$rtable_order_NUM <- as.numeric(d$rtable_order)
 d$rtable_family_NUM <- as.numeric(d$rtable_family)
 d$rtable_genus_NUM <- as.numeric(d$rtable_genus)
+d$rtable_size_NUM <- as.numeric(d$rtable_size)
 d$rtable_threat_keywords_NUM <- as.numeric(d$rtable_threat_keywords)
 d$rtable_conservation_keywords_NUM <- as.numeric(d$rtable_conservation_keywords)
+d$rtable_countries <- as.numeric(d$rtable_countries)
+d$rtable_country_count
+d$rtable_tCount
 
-corr.test(d[,c('rtable_conservation_keywords_NUM','rtable_threat_keywords_NUM','rtable_tCount','rtable_status_NUM','rtable_kingdom_NUM','rtable_phylum_NUM','rtable_class_NUM','rtable_order_NUM','rtable_family_NUM','rtable_genus_NUM')])
+corr.test(d[,c('rtable_status_NUM','rtable_name_NUM','rtable_kingdom_NUM','rtable_phylum_NUM','rtable_class_NUM',
+               'rtable_order_NUM','rtable_family_NUM','rtable_genus_NUM','rtable_size_NUM','rtable_threat_keywords_NUM','rtable_conservation_keywords_NUM',
+               'rtable_countries','rtable_country_count','rtable_tCount')])
 # Order seems to predict conservation keywords (.55)
 # Status predicted fairly well by conservation keywords
 # Phylum predicts Kingdom at only 90%, showing us the matching rate of error
 scatterplotMatrix(d[,c('income','education','women')])
 
 
-
-
 # left
 d$ltable_country_count
-d$ltable_status
-d$ltable_pop_trend
-d$ltable_status_NUM <- as.numeric(d$ltable_status)
-d$ltable_pop_trend_NUM <- as.numeric(d$ltable_pop_trend)
+d$ltable_name_NUM <- as.numeric(d$ltable_name)
+d$ltable_genus_NUM <- as.numeric(d$ltable_genus)
+d$ltable_family_NUM <- as.numeric(d$ltable_family)
 d$ltable_ecology_NUM <- as.numeric(d$ltable_ecology)
+d$ltable_countries_NUM <- as.numeric(d$ltable_countries)
+d$ltable_pop_trend_NUM <- as.numeric(d$ltable_pop_trend)
+d$ltable_status_NUM <- as.numeric(d$ltable_status)
 
-corr.test(d[,c('ltable_status_NUM','ltable_pop_trend_NUM','ltable_country_count','ltable_ecology_NUM')])
+corr.test(d[,c('ltable_country_count','ltable_name_NUM','ltable_genus_NUM',
+               'ltable_family_NUM','ltable_ecology_NUM','ltable_countries_NUM','ltable_pop_trend_NUM','ltable_status_NUM')])
 scatterplotMatrix(d[,c('income','education','women')])
 
 
