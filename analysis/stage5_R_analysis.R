@@ -3,14 +3,31 @@
 #############################################
 
 d <- read.csv("labeled.csv")
+varDescribe(d)
 str(d)
 
-varDescribe(d)
+
+# maxtrix?
+chisq.test(as.matrix(d[,6,7]))
+dMat <- as.matrix(d[,6:7])
+chisq.test(d$ltable_genus,d$ltable_status) # this works
+
+# table?
+# see if we can use only rows with all data?
+table(d[,c('ltable_family','ltable_genus')])
+d$ltable_family
+d$ltable_genus
+
+
+chisq.test(table(d[,6,7]))
+tableVersion <- table(d[,6:7])
+str(tableVersion)
+d[,7]
+summary(tableVersion)
+str(d)
 # Univariate exploration
 varPlot(d$rtable_country_count) 
-varPlot(d$) 
-varPlot(d$)
-
+chisq.test(d)
 
 #############################################
 ########### correlate some shit #############
@@ -33,9 +50,14 @@ d$rtable_countries <- as.numeric(d$rtable_countries)
 d$rtable_country_count
 d$rtable_tCount
 
+dNew <- cbind(d['rtable_status_NUM'],d['rtable_kingdom_NUM'])
+str(dNew)
 corr.test(d[,c('rtable_status_NUM','rtable_name_NUM','rtable_kingdom_NUM','rtable_phylum_NUM','rtable_class_NUM',
                'rtable_order_NUM','rtable_family_NUM','rtable_genus_NUM','rtable_size_NUM','rtable_threat_keywords_NUM','rtable_conservation_keywords_NUM',
                'rtable_countries','rtable_country_count','rtable_tCount')])
+
+chisq.test(d) 
+str(d)
 # Order seems to predict conservation keywords (.55)
 # Status predicted fairly well by conservation keywords
 # Phylum predicts Kingdom at only 90%, showing us the matching rate of error
